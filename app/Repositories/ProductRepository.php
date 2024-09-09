@@ -19,10 +19,17 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return $this->model->all();
     }
+
     public function find()
     {
         
     }
+
+    public function store($data) 
+    {
+        return $this->model->create($data->all());
+    }
+
     public function update($id, $data)
     {
 

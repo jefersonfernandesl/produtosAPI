@@ -1,13 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProductsController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\ProductsController;
 use Illuminate\Support\Facades\Route;
 
-Route::controller(ProductsController::class)->group(function () {
-    Route::get('/products', 'all')->name('productos.all');
-});
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('api')->group(function () {
+    Route::controller(ProductsController::class)->group(function () {
+        Route::get('/products', 'all')->name('products.all');
+        Route::post('/products', 'store')->name('products.create');
+    });
 });
